@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.Scanner;
+
 public class TicTacToe {
     public static final int PLAYER_X = 1;
     public static final int PLAYER_O = 2;
@@ -39,10 +40,11 @@ public class TicTacToe {
         }
         System.out.println("Thanks for playing!");
     }
+
     public static void printBoard(int[][] board) {
         {
-            for (int i = 0; i < board.length; i++){
-                for (int j = 0; j < board[0].length; j++){
+            for (int i = 0; i < board.length; i++) {
+                for (int j = 0; j < board[0].length; j++) {
                     board[i][j] = ' ';
                 }
             }
@@ -50,21 +52,22 @@ public class TicTacToe {
     }
 
     public static int getRow(Scanner keyboard) {
-        int move =0;
-        if(keyboard.hasNextInt()) {
-            move=keyboard.nextInt();
+        int move = 0;
+        if (keyboard.hasNextInt()) {
+            move = keyboard.nextInt();
         }
-        if((move <0) || (move >=3)) {
+        if ((move < 0) || (move >= 3)) {
             throw new UnsupportedOperationException("Row number greater than 3 or less than 1");
         }
-        return move;	}
+        return move;
+    }
 
     public static int getCol(Scanner keyboard) {
-        int move =0;
-        if(keyboard.hasNextInt()) {
-            move=keyboard.nextInt();
+        int move = 0;
+        if (keyboard.hasNextInt()) {
+            move = keyboard.nextInt();
         }
-        if((move <0) || (move >=3)) {
+        if ((move < 0) || (move >= 3)) {
             throw new UnsupportedOperationException("colum number greater than 3 or less than 1");
         }
         return move;
@@ -83,7 +86,7 @@ public class TicTacToe {
     }
 
     public static void placeMarker(int[][] board, int row, int col, int player) {
-        if(board[row][col]==player) {
+        if (board[row][col] == player) {
             System.out.println("Space is already occupied.");
         }
     }
@@ -93,38 +96,46 @@ public class TicTacToe {
         boolean win = false;
         for (i = 0; i < board.length && !win; i++) {
             for (j = 0; j < board[0].length; j++) {
-                if (board[i][j] != player){
-                    break;}
+                if (board[i][j] != player) {
+                    break;
+                }
             }
-            if (j == board[0].length){
-                win = true;}
+            if (j == board[0].length) {
+                win = true;
+            }
         }
 
         for (j = 0; j < board[0].length && !win; j++) {
             for (i = 0; i < board.length; i++) {
-                if (board[i][j] != player){
-                    break;}
+                if (board[i][j] != player) {
+                    break;
+                }
             }
-            if (i == board.length){
-                win = true;}
+            if (i == board.length) {
+                win = true;
+            }
         }
 
         if (!win) {
             for (i = 0; i < board.length; i++) {
-                if (board[i][i] != player){
-                    break;}
+                if (board[i][i] != player) {
+                    break;
+                }
             }
-            if (i == board.length){
-                win = true;}
+            if (i == board.length) {
+                win = true;
+            }
         }
 
         if (!win) {
             for (i = 0; i < board.length; i++) {
-                if (board[i][board.length - 1 - i] != player){
-                    break;}
+                if (board[i][board.length - 1 - i] != player) {
+                    break;
+                }
             }
-            if (i == board.length){
-                win = true;}
+            if (i == board.length) {
+                win = true;
+            }
         }
         return win;
     }
